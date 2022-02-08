@@ -7,7 +7,7 @@ Funktioniert mit ESP8266 und optional einer DS3231 RTC, benötigt fuer einen sin
 
 Optionen des Webservers:
 
-"http://IP-Adresse/statistik"  
+"HTTP://IP-Adresse/statistik"  
 Statistik ueber die Clients die eine Verbindung aufgebaut haben, wenn eine DS3231 Uhr verbaut ist, mit Zeitstempel. An Informationen ueber die Clients
 steht nur der User-Agent, die angeforderte Webseite und evtl. die lokale IP-Adresse des Clients zur Verfuerung. Andere Informationen insbesondere 
 personenbezogene Informationen stehen gar nicht zur verfuegung bzw. werden nicht erfasst. 
