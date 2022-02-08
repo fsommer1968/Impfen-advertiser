@@ -5,7 +5,7 @@
 
 static const char authUser[] PROGMEM = "SETZEMICHUSERNAME";                 // Userid fuer Abruf der Statistikdaten
 static const char authPassword[] PROGMEM = "SETZEMICHPASSWORT";   //Passwort fuer Abruf der Statistikdaten
-static const char otaPassword[] PROGMEM = "/var/index.html-99128"; // Passwort fuer OTA geschuetzten Update
+static const char otaPassword[] PROGMEM = "PASSWORTOTA"; // Passwort fuer OTA geschuetzten Update
 static const char localssid[]  = "LOKALESSID";   //SSID lokales, eigenes WLAN  - erleichtert dministration und ggf. OTA Update
 static const char localpassword[]  = "PASSWORTLOKALESSID"; // Passwort //lokales, eigenes WLAN, entweder arbeitet das Modul als Client im eigenen WLAN
                                                         // oder als Hotspot mit einer zufällig ausgewählten SSID wie oben beschrieben
@@ -407,6 +407,9 @@ void setup() {  //setup
   echtzeituhr_finden();
   
   // Webserver einrichten
+  webserver.on(F("/favicon.ico"), [] () {
+     webserver.send(200,F("text/html"),F("<!DOCTYPE html>\r\n<html><head>\r\n<link rel='icon' href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAS0lEQVR42s2SMQ4AIAjE+P+ncSYdasgNXMJgcyIIlVKPIKdvioAXyWBeJmVpqRZKWtj9QWAKZyWll50b8IcL9JUeQF50n28ckyb0ADG8RLwp05YBAAAAAElFTkSuQmCC' type='image/x-png' />\r\n<title>Impfen Advertiser</title>\r\n</head></html>"));
+  });
   webserver.on(F("/statistik"), []() {  //Requestfile==Statistik anzeigen
     if (!webserver.authenticate(authUser,authPassword)) {
       return webserver.requestAuthentication(DIGEST_AUTH,www_realm,authFailResponse);
