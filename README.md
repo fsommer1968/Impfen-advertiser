@@ -1,4 +1,4 @@
-#Impfkampagne Advertiser
+# Impfkampagne Advertiser
 Verhaelt sich wie ein Hotspot, kann aber Content zum Thema Impfen (oder jeden beliebigen anderen statischen Web Content ausliefern)
 Per Zufallsgenerator gesteuert wird eine aus einer Liste von (derzeit 16) Botschaften zum Thema Corona und Impfen eine SSID erzeugt und
 fuer 90 Sekunden bis 4 Minuten aufrecht erhalten. Danach wird die SSID und der WLAN Kanal gewechselt
