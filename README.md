@@ -5,13 +5,15 @@ fuer 90 Sekunden bis 4 Minuten aufrecht erhalten. Danach wird die SSID und der W
 
 Funktioniert mit ESP8266 und optional einer DS3231 RTC, benötigt fuer einen sinnvollen Betrieb ESP8266 Konfiguration mit mindestens 2MB Filesystem
 
-Optionen des We3bservers:
+Optionen des Webservers:
 
-<IP-Adresse>/statistik   :
+"http://IP-Adresse/statistik"  
 Statistik ueber die Clients die eine Verbindung aufgebaut haben, wenn eine DS3231 Uhr verbaut ist, mit Zeitstempel. An Informationen ueber die Clients
 steht nur der User-Agent, die angeforderte Webseite und evtl. die lokale IP-Adresse des Clients zur Verfuerung. Andere Informationen insbesondere 
 personenbezogene Informationen stehen gar nicht zur verfuegung bzw. werden nicht erfasst. 
+
 Auszug aus einem Logfile:
+```
 ------------------
 05.02.2022 14:58:30 --- Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.32 Safari/537.36 --- /generate_204_443b2f4a-a59d-437b-8e33-2930cc1511d5
 05.02.2022 14:58:35 --- Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.32 Safari/537.36 --- /generate_204
@@ -33,11 +35,12 @@ Auszug aus einem Logfile:
 05.02.2022 17:53:51 --- Mozilla/5.0 (iPhone; CPU iPhone OS 15_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 --- /hotspot-detect.html
 05.02.2022 17:53:51 --- CaptiveNetworkSupport-418 wispr --- /hotspot-detect.html
 ---------------
+```
 
-<IP-Adresse>/purge  :
+HTTP://IP-Adresse/purge 
 Das Statistikfile wird komplett geloescht
 
-<IP-Adresse>/BELIEBIGEANDEREURL  :
+HTTP://IP-Adresse/BELIEBIGEANDEREURL 
 Es wird die im Sketch definierte Standars HTML Seite ausgeliefert, die evtl. auf eine weitere HTML Seite vewrlinkt, die dann aber im lokalen Filesystem 
 des ESP abgelegt sein muss
 
