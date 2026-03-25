@@ -1,0 +1,185 @@
+/**
+ * @file config.h.example
+ * @brief Konfigurationsdatei für Impfen-Advertiser V2
+ * 
+ * WICHTIG: Kopieren Sie diese Datei nach config.h und passen Sie die Werte an!
+ * Die config.h sollte NICHT in die Versionskontrolle eingecheckt werden.
+ */
+
+#ifndef CONFIG_H
+#define CONFIG_H
+
+// ============================================================================
+// VERSION INFORMATION
+// ============================================================================
+#define FIRMWARE_VERSION "2.0.0"
+#define FIRMWARE_NAME "Impfen-Advertiser"
+
+// ============================================================================
+// AUTHENTIFIZIERUNG
+// ============================================================================
+// Benutzername für Statistik-Zugriff (/statistik, /purge)
+#define AUTH_USER "admin"
+
+// Passwort für Statistik-Zugriff
+#define AUTH_PASSWORD "changeme123"
+
+// Passwort für OTA (Over-The-Air) Updates
+#define OTA_PASSWORD "otapassword123"
+
+// ============================================================================
+// LOKALES WLAN (für Administration und OTA Updates)
+// ============================================================================
+// SSID des lokalen WLANs
+#define LOCAL_SSID "MeinHeimWLAN"
+
+// Passwort des lokalen WLANs
+#define LOCAL_PASSWORD "meinwlanpasswort"
+
+// Timeout für WLAN-Verbindung in Millisekunden
+#define WIFI_CONNECT_TIMEOUT 10000
+
+// ============================================================================
+// WLAN SENDELEISTUNG
+// ============================================================================
+// Sendeleistung im lokalen Modus (dBm) - niedrigere Werte für lokalen Betrieb
+#define WLAN_LOCAL_POWER 10.5f
+
+// Sendeleistung im AP-Modus (dBm) - höhere Werte für größere Reichweite
+#define WLAN_AP_POWER 20.5f
+
+// ============================================================================
+// TIMING-EINSTELLUNGEN
+// ============================================================================
+// Minimale Zeit in Sekunden, die eine SSID aktiv bleibt
+#define MIN_LOOP_TIME_SEC 90
+
+// Maximale Zeit in Sekunden, die eine SSID aktiv bleibt
+#define MAX_LOOP_TIME_SEC 240
+
+// ============================================================================
+// NTP (Network Time Protocol) EINSTELLUNGEN
+// ============================================================================
+// NTP-Server für Zeitsynchronisation
+#define NTP_SERVER "de.pool.ntp.org"
+
+// Lokaler UDP-Port für NTP-Anfragen
+#define NTP_PORT 8888
+
+// Zeitzone (1 = MEZ/CET, wird automatisch auf MESZ/CEST umgestellt)
+#define TIMEZONE_OFFSET 1
+
+// ============================================================================
+// HARDWARE-KONFIGURATION
+// ============================================================================
+// I2C-Pins für DS3231 RTC (Real Time Clock)
+#define I2C_SDA_PIN D6
+#define I2C_SCL_PIN D7
+
+// ============================================================================
+// NETZWERK-KONFIGURATION
+// ============================================================================
+// IP-Adresse des Access Points (Captive Portal)
+#define AP_IP_OCTET1 172
+#define AP_IP_OCTET2 217
+#define AP_IP_OCTET3 28
+#define AP_IP_OCTET4 1
+
+// DNS-Port für Captive Portal
+#define DNS_PORT 53
+
+// HTTP-Server Port
+#define HTTP_PORT 80
+
+// ============================================================================
+// LOGGING
+// ============================================================================
+// Pfad zur Log-Datei im Filesystem
+#define LOG_FILE "/requests.txt"
+
+// Maximale Größe der Log-Datei in Bytes (0 = unbegrenzt)
+#define MAX_LOG_SIZE 100000
+
+// Log-Trennzeichen
+#define LOG_SEPARATOR " ## "
+
+// ============================================================================
+// DEBUG-EINSTELLUNGEN
+// ============================================================================
+// Debug-Modus aktivieren (true/false)
+#define DEBUG_MODE true
+
+// Serielle Baudrate
+#define SERIAL_BAUD 74880
+
+// Verbose Logging (mehr Details in der seriellen Ausgabe)
+#define VERBOSE_LOGGING true
+
+// ============================================================================
+// BOTSCHAFTEN / SSID-LISTE
+// ============================================================================
+// Anzahl der verfügbaren Botschaften (muss mit Array übereinstimmen!)
+#define MAX_BOTSCHAFT 17
+
+// SSID-Botschaften (max. 32 Zeichen pro SSID)
+// HINWEIS: Diese können auch zur Laufzeit über Web-Interface geändert werden
+const char SSID_MESSAGES[MAX_BOTSCHAFT][32] PROGMEM = {
+    "Test",
+    "Nicht Impfen tötet!",
+    "Impfen. What else?",
+    "Impfgegner sind nicht schlau",
+    "Lass-Dich-Impfen",
+    "Impfen bringt Freiheit",
+    "Impfen schützt auch die Kultur",
+    "Nazis unterwandern Impfgegner!",
+    "Impfen lohnt sich",
+    "Dann geh doch zum Impfen!",
+    "see. think. impf.",
+    "#ZusammenGegenCorona",
+    "Impfen ist wichtig!",
+    "Wir lieben Impfen",
+    "Impfen hilft",
+    "Come impf and find out",
+    "Nicht Impfen macht Pharma reich"
+};
+
+// ============================================================================
+// ERWEITERTE EINSTELLUNGEN
+// ============================================================================
+// Automatischer WLAN-Kanal-Wechsel aktivieren
+#define AUTO_CHANNEL_SWITCH true
+
+// Minimaler WLAN-Kanal (1-13 in Europa)
+#define MIN_WIFI_CHANNEL 1
+
+// Maximaler WLAN-Kanal (1-13 in Europa)
+#define MAX_WIFI_CHANNEL 13
+
+// Captive Portal aktivieren (DNS-Umleitung)
+#define ENABLE_CAPTIVE_PORTAL true
+
+// OTA Updates aktivieren
+#define ENABLE_OTA true
+
+// RTC (Real Time Clock) verwenden falls vorhanden
+#define USE_RTC true
+
+// ============================================================================
+// WEB-INTERFACE EINSTELLUNGEN
+// ============================================================================
+// Realm für HTTP-Authentifizierung
+#define WWW_REALM "Impfen Advertiser Admin"
+
+// Standard-HTML-Antwort für nicht gefundene Seiten
+#define DEFAULT_HTML_RESPONSE \
+    "<!DOCTYPE html><html lang='de'><head>" \
+    "<meta name='viewport' content='width=device-width'>" \
+    "<title>Impfen tötet NICHT</title></head><body>" \
+    "<h1><p style=\"text-align: center\">Hallo Impfgegner!</p></h1>" \
+    "<p style=\"text-align: center\">" \
+    "Glaub nicht jeden Scheiss in Telegram, sondern lass Dich impfen!</p>" \
+    "<p style=\"text-align: center\">" \
+    "<a href=\"http://./Impfung.html\">Beitrag aus Wikipedia zum Thema Impfung</a></p>" \
+    "</body></html>"
+
+#endif // CONFIG_H

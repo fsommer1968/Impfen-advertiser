@@ -1,0 +1,75 @@
+# Konfigurationsdatei mit sensiblen Daten
+config.h
+
+# Arduino IDE
+*.hex
+*.eep
+*.elf
+*.map
+*.sym
+*.lss
+*.lst
+*.o
+*.d
+*.a
+
+# Build-Verzeichnisse
+build/
+.build/
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.directory
+
+# Backup-Dateien
+*.bak
+*.backup
+*.old
+*.orig
+
+# Log-Dateien
+*.log
+
+# Temporäre Dateien
+*.tmp
+*.temp
+*.swp
+*.swo
+
+# Python (falls verwendet)
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+
+# Node.js (falls verwendet)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Filesystem-Daten (optional, je nach Bedarf)
+# data/
+
+# Persönliche Notizen
+notes.txt
+TODO.txt
